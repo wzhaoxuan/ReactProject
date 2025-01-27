@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
+import Home from './Home';
 
+// 
 function App() {
   return (
+    /* 
+      This is an jsx syntax, not a html technically.
+      jsx uses className instead of class is because class is reserved for html but the className will display as class in inspect.
+    */
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* self-closing tag */}
+      <Navbar /> 
+      <div className="content">
+        <Home />
+      </div>
     </div>
   );
 }
 
+// Export the component to allow it to be used somewhere outside
 export default App;
