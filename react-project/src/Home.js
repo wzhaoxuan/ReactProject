@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import BlogList from "./blogList";
+  
 const Home = () =>{
     const [blogs, setBlogs] = useState([
         {title: 'My new website', body: 'alkvwerjfo', author:'mario', id: 1}, // Properties: title, body, author, id 
@@ -7,15 +9,9 @@ const Home = () =>{
     ]);
 
     return(
-        <div classblogs="Home">
-            {/* Use map() to loop through the property of the object */}
-           {blogs.map((blog)=>(
-            // Key is used to keep tracking of each item in the dom as it outputs in React
-            <div className="blog-preview" key={blog.id}>
-                <h2>{blog.title}</h2>
-                <p>Written By {blog.author}</p>
-            </div>
-           ))}
+        <div className="Home">
+            {/* Use props to pass the blogs data to the child component */}
+           <BlogList blogs_props={blogs} title="All Blogs!"/>
         </div>
     );
 }
