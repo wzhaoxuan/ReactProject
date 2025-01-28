@@ -4,31 +4,29 @@ import BlogList from "./Bloglist";
 // UseEffect: A hook runs a function every render of the components
   
 const Home = () =>{
-    const [blogs, setBlogs] = useState([
-        {title: 'My Portfolio', body: 'alkvwerjfo', author:'mario', id: 1}, // Properties: title, body, author, id 
-        {title: 'My new website', body: 'alkvwerjfo', author:'mario', id: 2},
-        {title: 'About me', body: 'alkvwerjfo', author:'mario', id: 3}
-    ]);
+    const [blogs, setBlogs] = useState(null);
 
     const [name, setName] = useState('mario');
 
-    const handleDelete = (id) =>{
-        // Filter out the blog with non-indentical id and store into a new array
-        const newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlogs(newBlogs); 
-    }
-
+    
     // This will run the function every render of the component
     useEffect(() => {
-        console.log("Use Effect ran");
-        console.log(blogs);
-        console.log(name);
-    }, [name]); // Dependency array: only run the function when the name changes
+        // Fetch the data from the url to the server
+        fetch('http://localhost:8000/blogs')
+        // This is a promise, so we need to convert it to json with response object
+        .then(res => {
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+            setBlogs(data);
+        })
+    }, []); // Dependency array: only run the function when the name changes
 
     return(
         <div className="Home">
-            {/* Use props to pass the blogs data as well as the function to the child component*/}
-           <BlogList blogs_props={blogs} title="All Blogs!" handleDelete={handleDelete}/>
+            {/* Apply javascript*/}
+           {blogs && <BlogList blogs_props={blogs} title="All Blogs!"/>}
            <button onClick={() => setName('luigi')}>Change Name</button>
            <p>{name}</p>
         </div>
