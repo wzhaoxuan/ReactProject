@@ -10,6 +10,8 @@ const Home = () =>{
         {title: 'About me', body: 'alkvwerjfo', author:'mario', id: 3}
     ]);
 
+    const [name, setName] = useState('mario');
+
     const handleDelete = (id) =>{
         // Filter out the blog with non-indentical id and store into a new array
         const newBlogs = blogs.filter(blog => blog.id !== id);
@@ -20,12 +22,15 @@ const Home = () =>{
     useEffect(() => {
         console.log("Use Effect ran");
         console.log(blogs);
-    });
+        console.log(name);
+    }, [name]); // Dependency array: only run the function when the name changes
 
     return(
         <div className="Home">
             {/* Use props to pass the blogs data as well as the function to the child component*/}
            <BlogList blogs_props={blogs} title="All Blogs!" handleDelete={handleDelete}/>
+           <button onClick={() => setName('luigi')}>Change Name</button>
+           <p>{name}</p>
         </div>
     );
 }
