@@ -9,7 +9,7 @@ const BlogList = ({blogs_props, title}) => {
             {blogs_props.map((blog) => (
             // Key is used to keep tracking of each item in the dom as it outputs in React
             <div className="blog-preview" key={blog.id}>
-                <Link to={`/${blog.id}`}>
+                <Link to={`/blogs/${blog.id}`}>
                     <h2>{blog.title}</h2>
                     <p>Written By {blog.author}</p>
                 </Link>
