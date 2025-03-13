@@ -7,9 +7,11 @@ const useFetch = (url) => {
 
     // This will run the function every render of the component
     useEffect(() => {
+        const abortCont = new AbortController();
+
         setTimeout(() => {
         // Fetch the data from the url to the server
-        fetch(url)
+        fetch(url, {signal: abortCont.signal})
         // This is a promise, so we need to convert it to json with response object
         .then(res => {
             if(res.ok){
@@ -27,10 +29,17 @@ const useFetch = (url) => {
             setError(null);
         })
         .catch(err => {
-            setError(err.message);
-            setIsPending(false);
+            if(err.name === 'AbortError'){
+                console.log("Fetch Aborted!");
+            } else {
+                setError(err.message);
+                setIsPending(false);
+            }
         })
     }, 1000);
+
+    return () => abortCont.abort();
+
 }, [url]); // Dependency array: only run the function when the name changes. Whatever changes in the array, the function will run again.
 
     return{ data, isPending, error };

@@ -8,15 +8,13 @@ const Navbar = () =>{
     */
     return(
         <nav className="navbar">
-            <h1>ZX Portfolio</h1>
+            <h1>Portfolio.</h1>
             <div className="links">
                 <Link to="/">Home</Link>
-                <Link to="/aboutme" style={{
-                    color: "white",
-                    backgroundColor: "#f1356d",
-                    borderRadius: "8px"
-                }}>About Me</Link> 
-                <Link to="/create">New Blog</Link>
+                <Link to="/aboutme">About Me</Link> 
+                <Link to="/projects">Projects</Link>
+                <Link to="/create">Skills</Link>
+                <Link to="/contact">Contact</Link>
             </div>
         </nav>
     );

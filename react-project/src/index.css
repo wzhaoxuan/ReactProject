@@ -3,22 +3,33 @@
 /* base styles */
 * {
   margin: 0;
-  font-family: "Quicksand";
-  color: #333;
+  font-family: "Kameron";
+  color: #fafafa;
+  background-color: #000000;
 }
+
 .navbar {
-  padding: 20px;
+  padding: 25px 100px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
 }
+
 .navbar h1 {
-  color: #f1356d;
+  font-size: 2em;
+  font-weight: bolder;
+  background: -webkit-linear-gradient(#CCD0CF, #686A69);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+.links
+
 .navbar .links {
   margin-left: auto;
+
 }
+
 .navbar a {
   margin-left: 16px;
   text-decoration: none;
@@ -45,4 +56,8 @@
   font-size: 20px;
   color: #f1356d;
   margin-bottom: 8px;
+}
+
+.blog-preview a {
+  text-decoration: none;
 }
